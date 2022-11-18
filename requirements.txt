@@ -1,0 +1,11 @@
+pip
+setuptools
+wheel
+ipython
+pandas
+numpy
+matplot
+dtale
+pandas-profiling
+geopy
+geocoder
