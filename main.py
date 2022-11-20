@@ -1,7 +1,7 @@
 from pandas import pandas as pd
+from dtale import show
 from election_25 import exp_creation,convert_election_df_to_perentage_df
 from election_25 import kalpi_places,add_addresses_to_df, bibi_no_bibi
-from pandasgui import show
 pd.options.display.float_format = '{:.2f}'.format
 expb_url = 'expb.csv'
 expc_url = 'expc.csv'
@@ -43,6 +43,14 @@ if __name__ == '__main__':
     expc_bibi_no_bibi_df = bibi_no_bibi(expc_df)
     expb_bibi_no_bibi_df = bibi_no_bibi(expb_df)
 
+    expb_pivot_df = pd.pivot_table(expb_df, index = ['city','address'],
+                                   values =['voters','good_voters'],
+                                   aggfunc = ['sum'],
+                                    margins =True,
+                                    margins_name = 'Total'
+                                   )
+    expb_pivot_df.reset_index(level=['city','address'], inplace=True)
+    expb_pivot_df
 
 
 
